@@ -50,6 +50,8 @@ class listener_test extends \phpbb_test_case
 			'matomoanalytics_enabled' => true,
 			'matomoanalytics_url' => 'https://example.com/',
 			'matomoanalytics_site_id' => 1,
+			'matomoanalytics_user_id_enabled' => true,
+			'matomoanalytics_heartbeat' => 15,
 		]);
 		$this->template = $this->getMockBuilder('\phpbb\template\template')
 			->getMock();
@@ -58,6 +60,7 @@ class listener_test extends \phpbb_test_case
 		$this->user = new \phpbb\user($this->language, '\phpbb\datetime');
 		$this->user->data['user_id'] = 2;
 		$this->user->data['is_registered'] = true;
+		$this->user->data['username'] = "usertest";
 	}
 
 	/**
@@ -105,9 +108,12 @@ class listener_test extends \phpbb_test_case
 		$this->template->expects(self::once())
 			->method('assign_vars')
 			->with([
-				'MATOMOANALYTICS_ENABLED'	=> $this->config['matomoanalytics_enabled'],
-				'MATOMOANALYTICS_URL'		=> $this->config['matomoanalytics_url'],
-				'MATOMOANALYTICS_SITE_ID'	=> $this->config['matomoanalytics_site_id'],
+				'MATOMOANALYTICS_ENABLED'			=> $this->config['matomoanalytics_enabled'],
+				'MATOMOANALYTICS_URL'				=> $this->config['matomoanalytics_url'],
+				'MATOMOANALYTICS_SITE_ID'			=> $this->config['matomoanalytics_site_id'],
+				'MATOMOANALYTICS_USER_ID_ENABLED'	=> $this->config['matomoanalytics_user_id_enabled'],
+				'MATOMOANALYTICS_USER_ID'			=> $this->user->data['username'],
+				'MATOMOANALYTICS_HEARTBEAT'			=> $this->config['matomoanalytics_heartbeat'],
 			]);
 
 		$dispatcher = new \phpbb\event\dispatcher();
@@ -126,7 +132,7 @@ class listener_test extends \phpbb_test_case
 			[ // expected config and mode
 			  'settings',
 			  ['vars' => ['warnings_expire_days' => []]],
-			  ['warnings_expire_days', 'legend_matomoanalytics', 'matomoanalytics_enabled', 'matomoanalytics_url', 'matomoanalytics_site_id'],
+			  ['warnings_expire_days', 'legend_matomoanalytics', 'matomoanalytics_enabled', 'matomoanalytics_url', 'matomoanalytics_site_id', 'matomoanalytics_user_id_enabled', 'matomoanalytics_heartbeat'],
 			],
 			[ // unexpected mode
 			  'foobar',
