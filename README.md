@@ -3,16 +3,15 @@
 A phpBB extension that allows administrators to easily add Matomo Analytics to their forums. This is a fork of the official phpbb-googleanalytics
 extention.
 
-[![Build Status](https://github.com/Cube707/phpbb-matomoanalytics/workflows/Tests/badge.svg)](https://github.com/Cube707/phpbb-matomoanalytics/actions)
-[![codecov](https://codecov.io/gh/Cube707/phpbb-matomoanalytics/graph/badge.svg?token=8TYBD43FQD)](https://codecov.io/gh/Cube707/phpbb-matomoanalytics)
+[![Build Status](https://github.com/zorglube/phpbb-matomoanalytics/workflows/Tests/badge.svg)](https://github.com/zorglube/phpbb-matomoanalytics/actions)
+[![codecov](https://codecov.io/gh/zorglube/phpbb-matomoanalytics/graph/badge.svg?token=8TYBD43FQD)](https://codecov.io/gh/zorglube/phpbb-matomoanalytics)
 
 > [!IMPORTANT]
-> This Repository is no longer Maintained.
-> Check out [zorglube's fork](https://github.com/zorglube/phpbb-matomoanalytics) for continued development.
+> This Repository is the continuation of [Cube707's fork](https://github.com/Cube707/phpbb-matomoanalytics), originally froked from [googleanalytics](https://github.com/phpbb-extensions/googleanalytics).
 
 ## Install
 
-1. [Download the latest validated release](https://github.com/Cube707/phpbb-matomoanalytics/releases).
+1. [Download the latest validated release](https://github.com/Cube707/phpbb-matomoanalytics/releases) still the old repo for the moment.
 2. Unzip the downloaded release and copy it to the `ext` directory of your phpBB board.
 3. Navigate in the ACP to `Customise -> Manage extensions`.
 4. Look for `Matomo Analytics` under the Disabled Extensions list, and click its `Enable` link.
