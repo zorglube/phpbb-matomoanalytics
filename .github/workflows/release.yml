@@ -24,7 +24,7 @@ jobs:
       - .gitignore
       - build.xml
       - composer.lock
-  		- phpunit.xml.dist
+      - phpunit.xml.dist
       - README.md
       # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
       recursive_exclusions: # optional, default is 
