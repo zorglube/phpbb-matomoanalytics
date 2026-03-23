@@ -1,0 +1,37 @@
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+jobs:
+  package:
+    name: Zip Release
+    # You may pin to the exact commit or the version.
+    # uses: TheDoctor0/zip-release@b57d897cb5d60cb78b51a507f63fa184cfe35554
+    uses: TheDoctor0/zip-release@0.7.6
+    with:
+      # Filename for archive
+      filename: matomoanalytics-v${{ github.ref_name }}.zip
+      # Base path for archive files
+      path: # optional, default is .
+      # Working directory before zipping
+      directory: ./brctx/matomoanalytics # optional, default is .
+      # List of excluded files / directories
+      exclusions: # optional, default is 
+      - .github
+      - tests
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
+      - build.xml
+      - composer.lock
+  		- phpunit.xml.dist
+      - README.md
+      # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
+      recursive_exclusions: # optional, default is 
+      # Provide any custom parameters to the zipping command
+      custom: # optional, default is 
+      # Tool to use for archiving
+      type: zip # optional, default is zip
+      # An extra command that will run before zipping
+      command: mkdir ./brctx/matomoanalytics; cp ./* ./brctx/matomoanalytics; # optional, default is
+      
